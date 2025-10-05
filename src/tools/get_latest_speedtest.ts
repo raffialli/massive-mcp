@@ -2,9 +2,15 @@
 import fetch from "node-fetch";
 
 export const getLatestSpeedtest = async () => {
-  // FIXED: Correct endpoint is /api/v1/results/latest
-  const API_URL = "https://speedtest.massive-ai.net/api/v1/results/latest";
+  const API_URL = process.env.API_URL as string;
   const API_TOKEN = process.env.SPEEDTEST_TOKEN!;
+
+  if (!API_URL) {
+    throw new Error("API_URL not defined in environment variables");
+  }
+
+  console.error("Debug API_URL raw:", JSON.stringify(API_URL));
+  console.error("Length:", API_URL.length);
 
   try {
     const response = await fetch(API_URL, {
