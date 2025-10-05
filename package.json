@@ -2,6 +2,7 @@
   "name": "massive-mcp",
   "version": "1.0.0",
   "description": "My custom MCP server for Speedtest, Pi-hole, and Synology integrations.",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
