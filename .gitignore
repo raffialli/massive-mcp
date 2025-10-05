@@ -1,0 +1,71 @@
+# Check Point SE Lab gitignore v3
+# SECURITY RISK IF EDITED!!!
+# Ignore these file extensions
+*.xls
+*.xlsm
+*.csv
+*.txt
+*.bak
+*.pdf
+*.ini
+*.zip
+*.exe
+*.pem
+*.ppk
+*.info
+*.env
+
+
+# Ignore these filenames
+tf_outputs.json
+cp-se-lab-ansible-secrets.yaml
+
+# Python cache
+__pycache__/
+
+# PyCharm
+.idea/
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+*.lock.hcl
+*.tfvars
+.terraform/
+
+# Trav's customs
+scratch_pad*.py
+backup/
+archive/
+
+# Negations - exceptions to the gitignore
+!terraform.exe
+!deployment_checklist.txt
+!lab_guide*.txt
+
+#Raffi MCP project:
+# Environment variables (CRITICAL!)
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.js
+*.js.map
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
