@@ -1,18 +1,23 @@
+# Node.js / TypeScript build output
 node_modules/
 dist/
-.env
-*.log
-.env.local
-.env.*.local
 build/
 *.js
 *.js.map
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
 # Logs
-*.log
 logs/
+*.log
+
+# OS junk
 .DS_Store
 Thumbs.db
 
-# IDE
+# IDE / Editor configs
 .vscode/
 .idea/
