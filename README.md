@@ -49,7 +49,7 @@ speedtest-mcp-server/
 │       ├── trigger_speedtest.ts      # Trigger new test
 │       ├── get_last_n_results.ts     # Get historical results
 │       └── check_low_bandwidth.ts    # Analyze bandwidth trends
-├── dist/                             # Compiled JavaScript (after build)
+├── dist/                             # Compiled JavaScript (after build - local)
 ├── package.json
 ├── tsconfig.json
 └── README.md
@@ -77,21 +77,14 @@ npm install
 
 ---
 
-### 2️⃣ Mock Mode vs. Production Mode
 
-**🧪 Mock Mode (Default - No API Required)**
-
-The server works out-of-the-box with realistic mock data for testing — no API credentials needed!  
-Simply run the server and all tools will return simulated speed test data.
-
-**🚀 Production Mode (With Real API)**
+**🚀 Env variables**
 
 To connect to your actual Speedtest Tracker API, configure these environment variables:
 
 ```
 SPEEDTEST_BASE_URL=https://<your-speedtest-domain>/api/v1
 SPEEDTEST_TOKEN=<your_speedtest_token_here>
-USE_MOCK=false
 ```
 
 The server automatically detects when credentials are available and switches from mock to live mode.
@@ -132,20 +125,8 @@ C:\Users\<YOUR_USERNAME>\AppData\Roaming\Claude\claude_desktop_config.json
 ~/Library/Application Support/Claude/claude_desktop_config.json
 ```
 
-Example entry for **mock mode** (testing without API):
 
-```json
-{
-  "mcpServers": {
-    "speedtest-mcp": {
-      "command": "node",
-      "args": ["<path_to_project>/dist/index.js"]
-    }
-  }
-}
-```
-
-Example entry for **production mode** (with real API):
+**Example entry**:
 
 ```json
 {
@@ -156,7 +137,6 @@ Example entry for **production mode** (with real API):
       "env": {
         "SPEEDTEST_BASE_URL": "https://speedtest.example.com/api/v1",
         "SPEEDTEST_TOKEN": "your_token_here",
-        "USE_MOCK": "false"
       }
     }
   }
@@ -191,7 +171,6 @@ Claude will call the appropriate tools and return formatted results!
 - The server uses the [`@modelcontextprotocol/sdk`](https://www.npmjs.com/package/@modelcontextprotocol/sdk) to handle JSON-RPC over stdio.  
 - `index.ts` defines all MCP tools with input schemas and starts the stdio transport.  
 - Each tool module (`src/tools/*.ts`) handles its own logic, API calls, and mock data.
-- **Mock mode** automatically activates when credentials are missing, enabling offline testing.
 - **Production mode** uses `node-fetch` to communicate with the Speedtest Tracker API.
 - All outputs are formatted as clean JSON that Claude can interpret and present to users.
 
@@ -291,8 +270,6 @@ Each new tool instantly becomes available to Claude through your MCP.
 
 This Speedtest MCP server demonstrates how to build a **production-ready integration** with:
 - Multiple complementary tools for comprehensive analysis
-- Mock data support for offline development and testing
-- Automatic switching between mock and production modes
 - Statistical analysis and trend detection
 - Clean, human-readable output formatting
 
