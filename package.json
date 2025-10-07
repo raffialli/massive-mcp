@@ -1,31 +1,25 @@
 {
-  "name": "massive-mcp",
+  "name": "speedtest-mcp-server",
   "version": "1.0.0",
-  "description": "My custom MCP server for Speedtest, Pi-hole, and Synology integrations.",
   "type": "module",
+  "description": "MCP server for Speedtest Tracker API",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "tsx src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsx src/index.ts"
+    "start": "node dist/index.js"
   },
-  "keywords": [
-    "mcp",
-    "modelcontextprotocol",
-    "typescript",
-    "homelab",
-    "automation"
-  ],
-  "author": "Raffi",
+  "keywords": ["mcp", "speedtest", "tracker"],
+  "author": "",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.19.1",
-    "dotenv": "^16.4.5",
-    "node-fetch": "^3.3.2"
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "@types/node": "^20.11.25",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0"
   }
 }
